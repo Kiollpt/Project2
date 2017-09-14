@@ -10,7 +10,7 @@ moviepy==0.2.2.11
 numpy==1.13.1
 olefile==0.44
 Pillow==4.2.1
-psycopg2==2.7.3.1
+psycopg2==2.5.4
 pytz==2017.2
 requests==2.11.1
 requests-toolbelt==0.7.0
