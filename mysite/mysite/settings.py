@@ -121,6 +121,7 @@ USE_TZ = False
 STATIC_URL = '/static/'
 
 #/* using Heroku for Deploying website* 2017-09-13/
+
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
 
@@ -136,4 +137,5 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
 #/* using Heroku for Deploying website* 2017-09-13/
