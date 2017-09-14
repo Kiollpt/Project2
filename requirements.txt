@@ -1,0 +1,19 @@
+beautifulsoup4==4.6.0
+decorator==4.1.2
+dj-database-url==0.4.2
+dj-static==0.0.6
+-e git://github.com/django/django@44a6c27fd461e1d2f37388c26c629f8f170e8722#egg=Django
+django-toolbelt==0.0.1
+gunicorn==19.7.1
+imageio==2.2.0
+moviepy==0.2.2.11
+numpy==1.13.1
+olefile==0.44
+Pillow==4.2.1
+psycopg2==2.7.3.1
+pytz==2017.2
+requests==2.11.1
+requests-toolbelt==0.7.0
+static3==0.7.0
+tqdm==4.15.0
+whitenoise==3.3.0
