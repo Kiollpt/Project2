@@ -2,7 +2,7 @@ beautifulsoup4==4.6.0
 decorator==4.1.2
 dj-database-url==0.4.2
 dj-static==0.0.6
-django==2.0.0
+django==1.7.7
 django-toolbelt==0.0.1
 gunicorn==19.7.1
 imageio==2.2.0
