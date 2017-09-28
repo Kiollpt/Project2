@@ -12,4 +12,8 @@ urlpatterns = [
     url(r'^(?P<question_id>[0-9]+)/results/$', views.results, name='results'),
     # ex: /polls/5/vote/
     url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
+    #2017.9.19 Add posting board#
+    url(r'^(?P<question_id>[0-9]+)/post/$', views.post, name='post'),
+    #2017.9.19 Add posting board#
+
 ]

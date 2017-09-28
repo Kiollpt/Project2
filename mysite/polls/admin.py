@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Question, Choice
+from .models import Question, Choice,Comment
 
 
 class ChoiceInline(admin.TabularInline):
@@ -14,3 +14,8 @@ class QuestionAdmin(admin.ModelAdmin):
 
 admin.site.register(Question, QuestionAdmin)
 #admin.site.register(Choice)
+
+
+#2017.9.19 Add posting board#
+admin.site.register(Comment)
+#2017.9.19 Add posting board#

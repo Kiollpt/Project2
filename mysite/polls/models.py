@@ -19,3 +19,10 @@ class Choice(models.Model):
     location= models.CharField(max_length=200,null=True,blank=True)
     def __str__(self):
         return self.choice_text
+#2017.9.19 Add posting board#
+class Comment(models.Model):
+    author= models.CharField(max_length=10)
+    text= models.CharField(max_length=100)
+    create_date= models.DateTimeField(default=timezone.now)
+
+#2017.9.19 Add posting board#

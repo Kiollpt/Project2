@@ -119,4 +119,13 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT= 'staticfiles'
+
+#2017-09-29/ for Deploying
+
+STATIC_ROOT= os.path.join(BASE_DIR,'staticfiles')
+STATICFILES_DIRS = (
+
+os.path.join(BASE_DIR,'static'),
+)
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#2017-09-29/ for Deploying

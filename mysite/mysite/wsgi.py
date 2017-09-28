@@ -16,9 +16,10 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
 
 from dj_static import Cling
 
-application = Cling(get_wsgi_application())
+#application = Cling(get_wsgi_application())
 
 #/* using Heroku for Deploying website* 2017-09-13/
-#from whitenoise.django import DjangoWhiteNoise
-#application = DjangoWhiteNoise(application)
+from whitenoise.django import DjangoWhiteNoise
+application = get_wsgi_application()
+application = DjangoWhiteNoise(application)
 #/* using Heroku for Deploying website* 2017-09-13/

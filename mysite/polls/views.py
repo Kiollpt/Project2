@@ -2,8 +2,12 @@ from django.http import HttpResponse,HttpResponseRedirect
 
 from django.template import loader
 from django.shortcuts import render, get_object_or_404
-from .models import Question,Choice
+from .models import Question,Choice,Comment
 from django.urls import reverse
+#2017-09 Add posting board
+from .forms import CommentForm
+from django.shortcuts import redirect
+#2017-09 Add posting board
 
 # Create your views here.
 def index(request):
@@ -18,7 +22,14 @@ def index(request):
 def detail(request, question_id):
     #return HttpResponse("You're looking at question %s." % question_id)
     question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'polls/details.html', {'question': question})
+
+    #2017.9.19 Add posting board#
+    all_comment_list= Comment.objects.all()
+    #2017.9.19 Add posting board#
+
+    return render(request, 'polls/details.html', {'question': question, 'all_comment_list':all_comment_list})
+
+
 
 def results(request, question_id):
     #response = "You're looking at the results of question %s."
@@ -43,3 +54,19 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+#2017.9.19 Add posting board#
+def post(request,question_id):
+    if request.method == "POST":
+        print('fuck you1')
+        form= CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('polls:detail',question_id)
+    else:
+        form= CommentForm()
+        print('fuck you2')
+
+    return render(request, 'polls/add_comment_to_post.html', {'form': form})
+
+#2017.9.19 Add posting board#
