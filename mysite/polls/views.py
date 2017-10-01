@@ -9,8 +9,17 @@ from .forms import CommentForm
 from django.shortcuts import redirect
 #2017-09 Add posting board
 
+#2017.10.1 Add login/out mechanisim
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login as aa_login
+from django.contrib.auth import authenticate
+#2017.10.1 Add login/out mechanisim
+
 # Create your views here.
 def index(request):
+    if request.method == "POST":
+        return redirect('polls:index')
+
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {'latest_question_list': latest_question_list}
     return render(request, 'polls/index.html', context)
@@ -37,6 +46,33 @@ def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/results.html', {'question': question})
 
+
+
+
+
+#2017.10.1 Add login mechanisim
+def login(request):
+    if request.method =='GET':
+        print("call login")
+        return render(request,'registration/login.html')
+
+    name= request.POST.get('username')
+    password= request.POST.get('password')
+    user= authenticate(username=name,password=password)
+    #print(name,password)
+    #print(user)
+    if not user:
+        return render(request,'registration/login.html')
+    aa_login(request,user)
+    return  redirect('polls:index')
+
+
+#2017.10.1 Add login mechanisim
+'''
+@:means python decorator as for packing a gift
+'''
+@login_required(login_url='/polls/login/')
+#2017.10.1 Add login mechanisim
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
@@ -55,17 +91,16 @@ def vote(request, question_id):
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
+
 #2017.9.19 Add posting board#
 def post(request,question_id):
     if request.method == "POST":
-        print('fuck you1')
         form= CommentForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('polls:detail',question_id)
     else:
         form= CommentForm()
-        print('fuck you2')
 
     return render(request, 'polls/add_comment_to_post.html', {'form': form})
 

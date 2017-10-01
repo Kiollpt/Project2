@@ -1,13 +1,10 @@
-
+{% extends "base.html" %}
 {% load static %}
-<head>
-    <title>Harry Website</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<head/>
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+
+
 <div class="page-header">
     <label1>To Decide..</label1>
 </div>
@@ -20,3 +17,4 @@
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+{% endblock %}

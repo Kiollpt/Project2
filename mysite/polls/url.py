@@ -1,4 +1,6 @@
 from django.conf.urls import url
+from django.contrib.auth.views import login,logout
+
 
 from . import views
 
@@ -15,5 +17,10 @@ urlpatterns = [
     #2017.9.19 Add posting board#
     url(r'^(?P<question_id>[0-9]+)/post/$', views.post, name='post'),
     #2017.9.19 Add posting board#
+    #2017.10.1 Add login/out mechanisim
+    url(r'^login/$', views.login, name='login'),
+    url(r'^logout/$', logout, name='logout'),
+    #2017.10.1 Add login/out mechanisim
+
 
 ]

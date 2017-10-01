@@ -1,10 +1,9 @@
+{% extends "base.html" %}
 {% load static %}
 
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<head/>
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
 
 <h1>{{ question.question_text }}</h1>
 
@@ -22,8 +21,8 @@
 {% endfor %}
 <input type="submit" value="Vote" /><br/>
 </form>
-----------------------Comment------------------------------
-<a class="btn btn-default" href="{% url 'polls:post' question.id %}">Add comment</a>
+<hr/>
+<a href="{% url 'polls:post' question.id %}"  class="btn btn-outline-info active" role="button">Add comment</a>
 {% for comment in all_comment_list %}
     <div class="comment">
         <div class="date">{{ comment.created_date }}</div>
@@ -33,3 +32,4 @@
 {% empty %}
     <p>No comments here yet :(</p>
 {% endfor %}
+{% endblock %}
